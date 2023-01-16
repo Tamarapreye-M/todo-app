@@ -7,6 +7,11 @@
 		hsl(192, 100%, 67%),
 		hsl(280, 87%, 65%)
 	);
+	--scroll-background: linear-gradient(
+		180deg,
+		hsl(192, 100%, 67%),
+		hsl(280, 87%, 65%)
+	);
 	/* dark theme */
 	--main-dark-background: hsl(235, 21%, 11%);
 	--primary-dark-background: hsl(235, 24%, 19%);
@@ -69,6 +74,7 @@ header h1 {
 main,
 input {
 	color: var(--text-light-greyish-blue);
+	caret-color: var(--bright-blue-text);
 }
 
 main .display-container {
@@ -81,6 +87,7 @@ main .display-container {
 	padding: 10px;
 	border-radius: 5px;
 }
+
 main .check-div {
 	/* display: inline-block; */
 	padding: 5px;
@@ -102,17 +109,26 @@ main .check-div:hover {
 main .active .check-div {
 	background-image: var(--check-background);
 }
-main .active p {
+/* the p containing the lists */
+main .list {
+	cursor: pointer;
+	word-break: break-all;
+	width: 85%;
+}
+main .active .list {
 	text-decoration: line-through;
 	color: var(--text-dark-greyish-blue-1);
+	cursor: pointer;
 }
 
+/* the input style */
 main .input-todo {
 	background-color: var(--primary-dark-background);
 	border: none;
 	outline: none;
 	width: 100%;
 }
+/* the box for the lists */
 .list-controls,
 .list-controls > * {
 	border-radius: 5px;
@@ -122,13 +138,43 @@ main .input-todo {
 	height: 60vh;
 	overflow-y: auto;
 	background-color: var(--primary-dark-background);
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
 }
+.list-box::-webkit-scrollbar-track {
+	background-color: #cccccc;
+	/* background-image: var(--scroll-background) !important; */
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+	border-radius: 100px;
+}
+.list-box::-webkit-scrollbar {
+	width: 10px;
+	background-color: #f5f5f5;
+	border-radius: 100px;
+}
+.list-box::-webkit-scrollbar-thumb {
+	background-color: #fff;
+	background-image: var(--scroll-background);
+	border-radius: 100px;
+}
+/* the individual lists */
 .list-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
 	border-bottom: 1px solid var(--text-dark-greyish-blue-1);
+}
+
+/* the close icon, hidden until hovered on */
+.close-icon {
+	visibility: hidden;
+}
+/* .close-icon {
+	visibility: visible;
+} */
+.list-container:hover .close-icon {
+	visibility: visible !important;
 }
 
 .working {
