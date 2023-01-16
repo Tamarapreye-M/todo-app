@@ -93,8 +93,8 @@ main .check-div {
 	padding: 5px;
 	border: 2px solid var(--text-dark-greyish-blue-1);
 	border-radius: 50%;
-	width: 30px;
-	height: 30px;
+	width: 28px;
+	height: 28px;
 	display: grid;
 	place-content: center;
 }
@@ -166,7 +166,7 @@ main .input-todo {
 	padding: 1rem;
 	border-bottom: 1px solid var(--text-dark-greyish-blue-1);
 }
-.list-container:nth-last-child(1){
+.list-container:nth-last-child(1) {
 	border-bottom: none;
 }
 
