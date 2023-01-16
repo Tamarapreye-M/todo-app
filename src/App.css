@@ -104,6 +104,7 @@ main .active .check-div {
 }
 main .active p {
 	text-decoration: line-through;
+	color: var(--text-dark-greyish-blue-1);
 }
 
 main .input-todo {
