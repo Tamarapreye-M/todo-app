@@ -10,6 +10,7 @@ const Main = () => {
 		id: ~~(Math.random() * 1000),
 		completed: false,
 		todo: todo,
+		showClose: false,
 	};
 	const [allTodos, setAllTodos] = useState([]);
 
