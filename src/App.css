@@ -20,6 +20,13 @@
 	--text-dark-greyish-blue-1: hsl(234, 11%, 52%);
 	--text-dark-greyish-blue-2: hsl(233, 14%, 35%);
 	--text-dark-greyish-blue-3: hsl(237, 14%, 26%);
+
+	/* light theme */
+	--main-light-background: hsl(0, 0%, 98%);
+	--light-mode-light-greyish-blue: hsl(236, 33%, 92%);
+	--light-mode-dark-grey1: hsl(233, 11%, 84%);
+	--light-mode-dark-grey2: hsl(236, 9%, 61%);
+	--light-mode-dark-grey3: hsl(235, 19%, 35%);
 }
 *,
 *::before,
@@ -32,19 +39,9 @@
 html {
 	font-size: 18px;
 }
-body {
-	min-height: 100vh;
-	background-image: url(./Assets/bg-desktop-dark.jpg);
-	background-position: top center;
-	background-size: 100% 30%;
-	background-repeat: no-repeat;
-	background-color: hsl(235, 21%, 11%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+/* body{
 
-	/* background-size: cover; */
-}
+} */
 
 input,
 button {
@@ -52,9 +49,33 @@ button {
 }
 
 #root {
-	width: max(80%, 500px);
-	max-width: 700px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.parent-container {
+	background-image: url(./Assets/bg-desktop-dark.jpg);
+	background-position: top center;
+	background-size: 100% 30%;
+	background-repeat: no-repeat;
+	background-color: hsl(235, 21%, 11%);
+	width: 100%;
+	min-height: 100vh;
 	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* light mode background */
+.parent-container.light {
+	background-image: url(./Assets/bg-desktop-light.jpg);
+	background-color: var(--main-light-background);
+}
+.child-container {
+	max-width: 700px;
+	width: max(80%, 500px);
+	min-height: 100%;
 }
 
 header {
@@ -71,6 +92,12 @@ header h1 {
 }
 
 /* main */
+.parent-container.light main {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+.parent-container main {
+	box-shadow: rgba(0, 0, 0, 0.559) 0px 25px 50px -12px;
+}
 main,
 input {
 	color: var(--text-light-greyish-blue);
@@ -85,7 +112,11 @@ main .display-container {
 	gap: 20px;
 	background-color: var(--primary-dark-background);
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 7px;
+}
+
+.parent-container.light .display-container {
+	background-color: var(--main-light-background);
 }
 
 main .check-div {
@@ -98,7 +129,7 @@ main .check-div {
 	display: grid;
 	place-content: center;
 }
-main .check-div:hover {
+.parent-container.light .check-div main .check-div:hover {
 	background: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%))
 			padding-box,
 		var(--check-background) border-box;
@@ -106,6 +137,7 @@ main .check-div:hover {
 	border-radius: 50%;
 	cursor: pointer;
 }
+
 main .list-container.active .check-div {
 	background-image: var(--check-background);
 }
@@ -123,7 +155,7 @@ main .list-container.active .list {
 
 /* the input style */
 main .input-todo {
-	background-color: var(--primary-dark-background);
+	background-color: transparent;
 	border: none;
 	outline: none;
 	width: 100%;
@@ -131,7 +163,7 @@ main .input-todo {
 /* the box for the lists */
 .list-controls,
 .list-controls > * {
-	border-radius: 5px;
+	border-radius: 7px;
 }
 .list-box {
 	margin-top: 1rem;
@@ -140,6 +172,9 @@ main .input-todo {
 	background-color: var(--primary-dark-background);
 	scroll-behavior: smooth;
 	scrollbar-width: thin;
+}
+.parent-container.light .list-box {
+	background-color: var(--main-light-background);
 }
 .list-box::-webkit-scrollbar-track {
 	background-color: #cccccc;
@@ -192,6 +227,9 @@ main .input-todo {
 	border-top-right-radius: 0;
 	font-size: 0.9rem;
 	color: var(--text-dark-greyish-blue-1);
+}
+.parent-container.light .working {
+	background-color: var(--main-light-background);
 }
 .clear:hover {
 	color: #fff;
