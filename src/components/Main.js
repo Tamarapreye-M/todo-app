@@ -54,7 +54,10 @@ const Main = () => {
 			<div className="list-controls">
 				<AllTodo allTodos={allTodos} setAllTodos={setAllTodos} />
 				<div className="working">
-					<p>5 items left</p>
+					<p>
+						{allTodos.filter((each) => each.completed === false).length} items
+						left
+					</p>
 					<div className="desktop">
 						<span onClick={handleDisplays}>all</span>
 						<span onClick={handleDisplays}>active</span>
