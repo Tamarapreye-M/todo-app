@@ -55,12 +55,17 @@ const Main = () => {
 				<AllTodo allTodos={allTodos} setAllTodos={setAllTodos} />
 				<div className="working">
 					<p>5 items left</p>
-					<div>
+					<div className="desktop">
 						<span onClick={handleDisplays}>all</span>
 						<span onClick={handleDisplays}>active</span>
 						<span onClick={handleDisplays}>completed</span>
 					</div>
-					<p>clear completed</p>
+					<p className="clear">Clear Completed</p>
+				</div>
+				<div className="mobile">
+					<span onClick={handleDisplays}>all</span>
+					<span onClick={handleDisplays}>active</span>
+					<span onClick={handleDisplays}>completed</span>
 				</div>
 			</div>
 		</main>

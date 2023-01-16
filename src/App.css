@@ -161,9 +161,13 @@ main .input-todo {
 .list-container {
 	display: flex;
 	justify-content: space-between;
+	gap: 1rem;
 	align-items: center;
 	padding: 1rem;
 	border-bottom: 1px solid var(--text-dark-greyish-blue-1);
+}
+.list-container:nth-last-child(1){
+	border-bottom: none;
 }
 
 /* the close icon, hidden until hovered on */
@@ -186,8 +190,50 @@ main .input-todo {
 	border-top: 1px solid var(--text-dark-greyish-blue-1);
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
+	color: var(--text-dark-greyish-blue-1);
 }
-.working span {
-	margin-inline: 8px;
+.clear:hover {
+	color: #fff;
+}
+.desktop {
+	display: none;
+}
+.mobile {
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	background: var(--primary-dark-background);
+	padding: 10px 0;
+	text-transform: capitalize;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--text-dark-greyish-blue-1);
+}
+.mobile span:hover {
+	color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+	.mobile {
+		display: none;
+	}
+	.desktop {
+		display: block;
+	}
+	.desktop {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		text-transform: capitalize;
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--text-dark-greyish-blue-1);
+	}
+	.desktop span:hover {
+		color: #fff;
+	}
 }
