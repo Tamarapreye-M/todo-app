@@ -25,22 +25,24 @@ const AllTodo = ({ allTodos, setAllTodos }) => {
 				};
 
 				return (
-					<div
-						key={each.id}
-						className={`list-container ${each.completed && "active"}`}
-					>
-						{" "}
-						<div className={`check-div`} onClick={handleCompleted}>
-							{each.completed && <img src={check} alt="" />}
+					each.todo.trim() && (
+						<div
+							key={each.id}
+							className={`list-container ${each.completed && "active"}`}
+						>
+							{" "}
+							<div className={`check-div`} onClick={handleCompleted}>
+								{each.completed && <img src={check} alt="" />}
+							</div>
+							<p className="list">{each.todo} </p>
+							<img
+								src={close}
+								alt=""
+								className={`close-icon`}
+								onClick={handleClose}
+							/>
 						</div>
-						<p className="list">{each.todo} </p>
-						<img
-							src={close}
-							alt=""
-							className={`close-icon`}
-							onClick={handleClose}
-						/>
-					</div>
+					)
 				);
 			})}
 		</div>
