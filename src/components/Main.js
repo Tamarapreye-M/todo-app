@@ -23,24 +23,23 @@ const Main = () => {
 	// const navActive = useRef();
 	// const navCompleted = useRef();
 	let allPrev = useRef(allTodos);
+	let completePrev = allTodos.filter((each) => each.completed);
 	useEffect(() => {
-		setAllTodos(allPrev.current);
+		setAllTodos((prev) => prev);
 	}, [allTodos.completed]);
 
 	const handleDisplays = (e) => {
 		console.log(e.target.innerHTML);
 		let content = e.target.innerHTML;
-		content === "all" && setAllTodos((prev) => prev);
+		content === "all" && setAllTodos((prev) => allPrev.current);
 		content === "active" &&
 			setAllTodos((prev) => {
 				let displaying = prev.filter((el) => el.completed === false);
 				return displaying;
 			});
-		content === "completed" &&
-			setAllTodos((prev) => {
-				let displaying = prev.filter((el) => el.completed);
-				return displaying;
-			});
+
+		content === "completed" && setAllTodos(completePrev);
+		// setAllTodos(allPrev.current);
 	};
 
 	return (
