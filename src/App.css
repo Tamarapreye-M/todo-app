@@ -106,7 +106,7 @@ main .check-div:hover {
 	border-radius: 50%;
 	cursor: pointer;
 }
-main .active .check-div {
+main .list-container.active .check-div {
 	background-image: var(--check-background);
 }
 /* the p containing the lists */
@@ -115,7 +115,7 @@ main .list {
 	word-break: break-all;
 	width: 85%;
 }
-main .active .list {
+main .list-container.active .list {
 	text-decoration: line-through;
 	color: var(--text-dark-greyish-blue-1);
 	cursor: pointer;

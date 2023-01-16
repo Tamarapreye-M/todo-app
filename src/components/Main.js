@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import check from "../Assets/icon-check.svg";
 
 import InputTodo from "./InputTodo";
@@ -10,7 +10,6 @@ const Main = () => {
 		id: ~~(Math.random() * 1000),
 		completed: false,
 		todo: todo,
-		showClose: false,
 	};
 	const [allTodos, setAllTodos] = useState([]);
 
@@ -20,16 +19,30 @@ const Main = () => {
 		// setAllTodos((prev) => [...prev, initial]);
 		setTodo("");
 	};
+	// const navAll = useRef();
+	// const navActive = useRef();
+	// const navCompleted = useRef();
+	let allPrev = useRef(allTodos);
+	useEffect(() => {
+		setAllTodos(allPrev.current);
+	}, [allTodos.completed]);
 
-	function handleCompleted(id) {
-		setAllTodos((prev) => {
-			const updated = prev.map((each) =>
-				each.id === id ? { ...each, completed: !each.completed } : each
-			);
-			return updated;
-		});
-		console.log(allTodos);
-	}
+	const handleDisplays = (e) => {
+		console.log(e.target.innerHTML);
+		let content = e.target.innerHTML;
+		content === "all" && setAllTodos((prev) => prev);
+		content === "active" &&
+			setAllTodos((prev) => {
+				let displaying = prev.filter((el) => el.completed === false);
+				return displaying;
+			});
+		content === "completed" &&
+			setAllTodos((prev) => {
+				let displaying = prev.filter((el) => el.completed);
+				return displaying;
+			});
+	};
+
 	return (
 		<main>
 			<div className="display-container">
@@ -40,17 +53,13 @@ const Main = () => {
 				<InputTodo todo={todo} setTodo={setTodo} />
 			</div>
 			<div className="list-controls">
-				<AllTodo
-					allTodos={allTodos}
-					setAllTodos={setAllTodos}
-					handleCompleted={handleCompleted}
-				/>
+				<AllTodo allTodos={allTodos} setAllTodos={setAllTodos} />
 				<div className="working">
 					<p>5 items left</p>
 					<div>
-						<span>All</span>
-						<span>Active</span>
-						<span>Completed</span>
+						<span onClick={handleDisplays}>all</span>
+						<span onClick={handleDisplays}>active</span>
+						<span onClick={handleDisplays}>completed</span>
 					</div>
 					<p>clear completed</p>
 				</div>
