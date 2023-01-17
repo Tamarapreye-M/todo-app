@@ -132,8 +132,8 @@ main .check-div {
 	padding: 5px;
 	border: 2px solid var(--text-dark-greyish-blue-1);
 	border-radius: 50%;
-	width: 28px;
-	height: 28px;
+	width: 23px;
+	height: 23px;
 	display: grid;
 	place-content: center;
 }
