@@ -129,11 +129,11 @@ main .display-container {
 
 main .check-div {
 	/* display: inline-block; */
-	padding: 5px;
+	padding: 6px;
 	border: 2px solid var(--text-dark-greyish-blue-1);
 	border-radius: 50%;
-	width: 23px;
-	height: 23px;
+	width: 22px;
+	height: 22px;
 	display: grid;
 	place-content: center;
 }
