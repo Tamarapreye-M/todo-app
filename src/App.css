@@ -104,6 +104,13 @@ input {
 	color: var(--light-mode-dark-grey3);
 	font-weight: 400;
 }
+input::placeholder {
+	color: var(--text-dark-greyish-blue-2);
+}
+
+.parent-container.light input::placeholder {
+	color: var(--light-mode-dark-grey2);
+}
 
 main .display-container {
 	margin-top: 1rem;
