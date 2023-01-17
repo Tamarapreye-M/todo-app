@@ -304,7 +304,11 @@ main .input-todo {
 .parent-container.light .mobile span:hover {
 	color: var(--light-mode-dark-grey3);
 }
-
+footer {
+	margin-top: 1rem;
+	text-align: center;
+	color: var(--text-dark-greyish-blue-1);
+}
 @media screen and (min-width: 768px) {
 	.mobile {
 		display: none;

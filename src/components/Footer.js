@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-	return <div>drag and drop to reorder</div>;
+	return <footer>drag and drop to reorder</footer>;
 };
 
 export default Footer;
