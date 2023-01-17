@@ -65,11 +65,11 @@ const Main = () => {
 					</div>
 					<p className="clear">Clear Completed</p>
 				</div>
-				<div className="mobile">
-					<span onClick={handleDisplays}>all</span>
-					<span onClick={handleDisplays}>active</span>
-					<span onClick={handleDisplays}>completed</span>
-				</div>
+			</div>
+			<div className="mobile">
+				<span onClick={handleDisplays}>all</span>
+				<span onClick={handleDisplays}>active</span>
+				<span onClick={handleDisplays}>completed</span>
 			</div>
 		</main>
 	);

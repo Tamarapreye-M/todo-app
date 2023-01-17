@@ -92,16 +92,17 @@ header h1 {
 }
 
 /* main */
-.parent-container.light main {
-	box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-}
-.parent-container main {
-	box-shadow: rgba(0, 0, 0, 0.559) 0px 25px 50px -12px;
-}
+
 main,
 input {
 	color: var(--text-light-greyish-blue);
 	caret-color: var(--bright-blue-text);
+	font-size: 1.1rem;
+}
+.parent-container.light main,
+.parent-container.light input {
+	color: var(--light-mode-dark-grey3);
+	font-weight: 400;
 }
 
 main .display-container {
@@ -129,7 +130,11 @@ main .check-div {
 	display: grid;
 	place-content: center;
 }
-.parent-container.light .check-div main .check-div:hover {
+
+.parent-container.light .check-div {
+	border-color: var(--light-mode-dark-grey1);
+}
+main .check-div:hover {
 	background: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%))
 			padding-box,
 		var(--check-background) border-box;
@@ -137,8 +142,18 @@ main .check-div {
 	border-radius: 50%;
 	cursor: pointer;
 }
+.parent-container.light main .check-div:hover {
+	background: linear-gradient(hsl(0, 0%, 98%), hsl(0, 0%, 98%)) padding-box,
+		var(--check-background) border-box;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	cursor: pointer;
+}
 
-main .list-container.active .check-div {
+.list-container.active .check-div {
+	background-image: var(--check-background);
+}
+.parent-container.light .list-container.active .check-div {
 	background-image: var(--check-background);
 }
 /* the p containing the lists */
@@ -153,6 +168,10 @@ main .list-container.active .list {
 	cursor: pointer;
 }
 
+.parent-container.light .list-container.active .list {
+	color: var(--light-mode-dark-grey1);
+}
+
 /* the input style */
 main .input-todo {
 	background-color: transparent;
@@ -164,6 +183,12 @@ main .input-todo {
 .list-controls,
 .list-controls > * {
 	border-radius: 7px;
+}
+.parent-container.light .list-controls {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+.parent-container .list-controls {
+	box-shadow: rgba(0, 0, 0, 0.559) 0px 25px 50px -12px;
 }
 .list-box {
 	margin-top: 1rem;
@@ -201,6 +226,9 @@ main .input-todo {
 	padding: 1rem;
 	border-bottom: 1px solid var(--text-dark-greyish-blue-1);
 }
+.parent-container.light .list-container {
+	border-color: var(--light-mode-dark-grey1);
+}
 .list-container:nth-last-child(1) {
 	border-bottom: none;
 }
@@ -229,10 +257,17 @@ main .input-todo {
 	color: var(--text-dark-greyish-blue-1);
 }
 .parent-container.light .working {
+	border-color: var(--light-mode-dark-grey1);
 	background-color: var(--main-light-background);
+	color: var(--light-mode-dark-grey2);
 }
+
 .clear:hover {
 	color: #fff;
+}
+
+.parent-container.light .clear:hover {
+	color: var(--light-mode-dark-grey3);
 }
 .desktop {
 	display: none;
@@ -245,13 +280,22 @@ main .input-todo {
 	gap: 1rem;
 	background: var(--primary-dark-background);
 	padding: 10px 0;
+	border-radius: 8px;
 	text-transform: capitalize;
 	font-size: 0.9rem;
 	font-weight: 700;
 	color: var(--text-dark-greyish-blue-1);
 }
+.parent-container.light .mobile {
+	background: var(--main-light-background);
+	box-shadow: rgba(0, 0, 0, 0.559) 0px 25px 50px -12px;
+}
 .mobile span:hover {
 	color: #fff;
+	cursor: pointer;
+}
+.parent-container.light .mobile span:hover {
+	color: var(--light-mode-dark-grey3);
 }
 
 @media screen and (min-width: 768px) {
@@ -270,8 +314,13 @@ main .input-todo {
 		font-size: 0.9rem;
 		font-weight: 700;
 		color: var(--text-dark-greyish-blue-1);
+		border-radius: 8px;
 	}
 	.desktop span:hover {
 		color: #fff;
+		cursor: pointer;
+	}
+	.parent-container.light .desktop span:hover {
+		color: var(--light-mode-dark-grey3);
 	}
 }

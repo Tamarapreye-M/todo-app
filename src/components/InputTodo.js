@@ -11,6 +11,7 @@ const InputTodo = ({ todo, setTodo }) => {
 			className="input-todo"
 			onChange={handleTodoList}
 			value={todo}
+			placeholder="Create a new todo..."
 		/>
 	);
 };
