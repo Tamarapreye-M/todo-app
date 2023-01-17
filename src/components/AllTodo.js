@@ -32,13 +32,18 @@ const AllTodo = ({ allTodos, setAllTodos }) => {
 						>
 							{" "}
 							<div className={`check-div`} onClick={handleCompleted}>
-								{each.completed && <img src={check} alt="" />}
+								{each.completed && (
+									<img src={check} alt="check icon" aria-label="check" />
+								)}
 							</div>
 							<p className="list">{each.todo} </p>
 							<img
 								src={close}
-								alt=""
+								alt="remove list icon"
+								aria-label="remove list"
+								title="remove list"
 								className={`close-icon`}
+								style={{ cursor: "pointer" }}
 								onClick={handleClose}
 							/>
 						</div>

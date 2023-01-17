@@ -10,9 +10,23 @@ const Header = ({ lightMode, setLightMode }) => {
 		<header>
 			<h1>TODO</h1>
 			{lightMode ? (
-				<img src={iconMoon} alt="" onClick={handleMode} />
+				<img
+					src={iconMoon}
+					alt="dark mode moon icon"
+					aria-label="switch to dark mode"
+					title="switch to dark mode"
+					onClick={handleMode}
+					style={{ cursor: "pointer" }}
+				/>
 			) : (
-				<img src={iconSun} alt="" onClick={handleMode} />
+				<img
+					src={iconSun}
+					alt="light mode sun icon"
+					aria-label="switch to light mode"
+					title="switch to light mode"
+					onClick={handleMode}
+					style={{ cursor: "pointer" }}
+				/>
 			)}
 		</header>
 	);
