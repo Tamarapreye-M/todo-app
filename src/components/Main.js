@@ -3,6 +3,7 @@ import check from "../Assets/icon-check.svg";
 
 import InputTodo from "./InputTodo";
 import AllTodo from "./AllTodo";
+import FilteredList from "./FilteredList";
 
 const Main = () => {
 	const [todo, setTodo] = useState("");
@@ -17,53 +18,49 @@ const Main = () => {
 	const handleAddTodo = (ev) => {
 		ev.preventDefault();
 		allTodos.push(initial);
-		// setAllTodos((prev) => [...prev, initial]);
 		setTodo("");
 	};
-	// const navAll = useRef();
-	// const navActive = useRef();
-	// const navCompleted = useRef();
+
 	let allPrev = useRef(allTodos);
 	let completePrev = allTodos.filter((each) => each.completed);
-	useEffect(() => {
-		// setAllTodos((prev) => prev);
-		setDiffTodos((prev) => {
-			function addName(arr) {
-				return arr.map((each) => ({ ...each, name: arr }));
-			}
-			let completeArr = allTodos
-				.filter((each) => each.completed)
-				.map((each) => ({ ...each, name: "completeArr" }));
-			let activeArr = allTodos
-				.filter((each) => each.completed === false)
-				.map((each) => ({ ...each, name: "activeArr" }));
-			let allArr = allTodos.map((each) => ({ ...each, name: "allArr" }));
+	// useEffect(() => {
+	// 	setDiffTodos((prev) => {
+	// 		function addName(arr) {
+	// 			return arr.map((each) => ({ ...each, name: arr }));
+	// 		}
+	// 		let completeArr = allTodos
+	// 			.filter((each) => each.completed)
+	// 			.map((each) => ({ ...each, name: "completeArr" }));
+	// 		let activeArr = allTodos
+	// 			.filter((each) => each.completed === false)
+	// 			.map((each) => ({ ...each, name: "activeArr" }));
+	// 		let allArr = allTodos.map((each) => ({ ...each, name: "allArr" }));
 
-			return [...prev, completeArr, activeArr, allArr];
-		});
-		// clean up function
-		// () => {
-		// 	return setDiffTodos((prev)=>{
-		// 		prev.map(each=> {
+	// 		return [...prev, completeArr, activeArr, allArr];
+	// 	});
+	// 	// clean up function
+	// 	// () => {
+	// 	// 	return setDiffTodos((prev)=>{
+	// 	// 		prev.map(each=> {
 
-		// 		})
-		// 	})
+	// 	// 		})
+	// 	// 	})
 
-		// }
-		console.log(diffTodos);
-	}, [allTodos.completed]);
-	console.log(diffTodos);
+	// 	// }
+	// 	console.log(diffTodos);
+	// }, [allTodos.completed]);
+	// console.log(diffTodos);
 	const handleDisplays = (e) => {
 		console.log(e.target.innerHTML);
 		let content = e.target.innerHTML;
-		// content === "all" && setAllTodos((prev) => allPrev.current);
-		// content === "active" &&
-		// 	setAllTodos((prev) => {
-		// 		let displaying = prev.filter((el) => el.completed === false);
-		// 		return displaying;
-		// 	});
+		content === "all" && setAllTodos((prev) => allPrev.current);
+		content === "active" &&
+			setAllTodos((prev) => {
+				let displaying = prev.filter((el) => el.completed === false);
+				return displaying;
+			});
 
-		// content === "completed" && setAllTodos(completePrev);
+		content === "completed" && setAllTodos(completePrev);
 
 		content === "all" &&
 			setAllTodos(diffTodos.find((each) => each.name === "completeArr"));
@@ -86,19 +83,11 @@ const Main = () => {
 						{allTodos.filter((each) => each.completed === false).length} items
 						left
 					</p>
-					<div className="desktop">
-						<span onClick={handleDisplays}>all</span>
-						<span onClick={handleDisplays}>active</span>
-						<span onClick={handleDisplays}>completed</span>
-					</div>
+					<FilteredList className="desktop" handleDisplays={handleDisplays} />
 					<p className="clear">Clear Completed</p>
 				</div>
 			</div>
-			<div className="mobile">
-				<span onClick={handleDisplays}>all</span>
-				<span onClick={handleDisplays}>active</span>
-				<span onClick={handleDisplays}>completed</span>
-			</div>
+			<FilteredList className="mobile" handleDisplays={handleDisplays} />
 		</main>
 	);
 };
