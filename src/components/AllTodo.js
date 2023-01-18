@@ -13,7 +13,7 @@ const AllTodo = ({ allTodos, setAllTodos }) => {
 								? { ...item, completed: !item.completed }
 								: item
 						);
-						console.log(updated);
+						// console.log(updated);
 						return updated;
 					});
 				};
