@@ -245,9 +245,7 @@ main .input-todo {
 .close-icon {
 	visibility: hidden;
 }
-/* .close-icon {
-	visibility: visible;
-} */
+
 .list-container:hover .close-icon {
 	visibility: visible !important;
 }
