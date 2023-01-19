@@ -38,15 +38,12 @@ const Main = () => {
 
 			return [...prev, completeArr, activeArr, allArr];
 		});
-		// clean up function
-		// () => {
-		// 	return setDiffTodos((prev)=>{
-		// 		prev.map(each=> {
-
-		// 		})
-		// 	})
-
-		// }
+		//clean up function
+		() => {
+			return setDiffTodos((prev) => {
+				prev.map((each) => {});
+			});
+		};
 		console.log(diffTodos);
 	}, [allTodos.completed]);
 	console.log(diffTodos);
