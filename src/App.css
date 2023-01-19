@@ -99,6 +99,7 @@ input {
 	caret-color: var(--bright-blue-text);
 	font-size: 1.1rem;
 }
+/* light mode colors */
 .parent-container.light main,
 .parent-container.light input {
 	color: var(--light-mode-dark-grey3);
