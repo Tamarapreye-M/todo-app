@@ -23,33 +23,33 @@ const Main = () => {
 
 	let allPrev = useRef(allTodos);
 	let completePrev = allTodos.filter((each) => each.completed);
-	// useEffect(() => {
-	// 	setDiffTodos((prev) => {
-	// 		function addName(arr) {
-	// 			return arr.map((each) => ({ ...each, name: arr }));
-	// 		}
-	// 		let completeArr = allTodos
-	// 			.filter((each) => each.completed)
-	// 			.map((each) => ({ ...each, name: "completeArr" }));
-	// 		let activeArr = allTodos
-	// 			.filter((each) => each.completed === false)
-	// 			.map((each) => ({ ...each, name: "activeArr" }));
-	// 		let allArr = allTodos.map((each) => ({ ...each, name: "allArr" }));
+	useEffect(() => {
+		setDiffTodos((prev) => {
+			function addName(arr) {
+				return arr.map((each) => ({ ...each, name: arr }));
+			}
+			let completeArr = allTodos
+				.filter((each) => each.completed)
+				.map((each) => ({ ...each, name: "completeArr" }));
+			let activeArr = allTodos
+				.filter((each) => each.completed === false)
+				.map((each) => ({ ...each, name: "activeArr" }));
+			let allArr = allTodos.map((each) => ({ ...each, name: "allArr" }));
 
-	// 		return [...prev, completeArr, activeArr, allArr];
-	// 	});
-	// 	// clean up function
-	// 	// () => {
-	// 	// 	return setDiffTodos((prev)=>{
-	// 	// 		prev.map(each=> {
+			return [...prev, completeArr, activeArr, allArr];
+		});
+		// clean up function
+		// () => {
+		// 	return setDiffTodos((prev)=>{
+		// 		prev.map(each=> {
 
-	// 	// 		})
-	// 	// 	})
+		// 		})
+		// 	})
 
-	// 	// }
-	// 	console.log(diffTodos);
-	// }, [allTodos.completed]);
-	// console.log(diffTodos);
+		// }
+		console.log(diffTodos);
+	}, [allTodos.completed]);
+	console.log(diffTodos);
 	const handleDisplays = (e) => {
 		console.log(e.target.innerHTML);
 		let content = e.target.innerHTML;
