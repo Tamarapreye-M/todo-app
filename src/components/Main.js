@@ -41,7 +41,7 @@ const Main = () => {
 
 		console.log(diffTodos);
 	}, [allTodos.completed]);
-	console.log(diffTodos);
+
 	const handleDisplays = (e) => {
 		console.log(e.target.innerHTML);
 		let content = e.target.innerHTML;
