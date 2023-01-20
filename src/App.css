@@ -265,7 +265,7 @@ main .input-todo {
 .parent-container.light .working {
 	border-color: var(--light-mode-dark-grey1);
 	background-color: var(--main-light-background);
-	color: var(--light-mode-dark-grey2);
+	color: var(--light-mode-dark-grey3);
 }
 
 .clear:hover {
