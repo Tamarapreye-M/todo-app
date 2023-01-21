@@ -26,7 +26,6 @@ const Main = () => {
 	};
 
 	const handleCompleted = (id) => {
-		console.log(todos);
 		const updated = todos.map((item) =>
 			item.id === id ? { ...item, completed: !item.completed } : item
 		);
@@ -50,6 +49,11 @@ const Main = () => {
 			setDisplayTodos(todos.filter((todos) => todos.completed));
 		}
 	};
+	const clearCompleted = () => {
+		let cleared = todos.filter((each) => each.completed === false);
+		setTodos(cleared);
+		setDisplayTodos(cleared);
+	};
 
 	return (
 		<main>
@@ -71,7 +75,9 @@ const Main = () => {
 						{todos.filter((each) => each.completed === false).length} items left
 					</p>
 					<FilteredList className="desktop" showTodos={showTodos} />
-					<p className="clear">Clear Completed</p>
+					<p className="clear" onClick={clearCompleted}>
+						Clear Completed
+					</p>
 				</div>
 			</div>
 			<FilteredList className="mobile" showTodos={showTodos} />
