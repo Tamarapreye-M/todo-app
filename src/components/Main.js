@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import check from "../Assets/icon-check.svg";
 
 import InputTodo from "./InputTodo";
@@ -7,11 +7,6 @@ import FilteredList from "./FilteredList";
 
 const Main = () => {
 	const [todo, setTodo] = useState("");
-	let initial = {
-		id: ~~(Math.random() * 1000),
-		completed: false,
-		todo: todo,
-	};
 
 	const [todos, setTodos] = useState([]);
 	const [displayTodos, setDisplayTodos] = useState([]);
@@ -47,11 +42,11 @@ const Main = () => {
 		setDisplayTodos(filtered);
 	};
 	const showTodos = (action) => {
-		if (action == "ALL") {
+		if (action === "ALL") {
 			setDisplayTodos(todos);
-		} else if (action == "ACTIVE") {
+		} else if (action === "ACTIVE") {
 			setDisplayTodos(todos.filter((todos) => !todos.completed));
-		} else if (action == "COMPLETED") {
+		} else if (action === "COMPLETED") {
 			setDisplayTodos(todos.filter((todos) => todos.completed));
 		}
 	};
