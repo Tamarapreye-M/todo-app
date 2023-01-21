@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import check from "../Assets/icon-check.svg";
 
 import InputTodo from "./InputTodo";
-import AllTodo from "./AllTodo";
+import DisplayTodos from "./DisplayTodos";
 import FilteredList from "./FilteredList";
 
 const Main = () => {
@@ -66,7 +66,7 @@ const Main = () => {
 				<InputTodo todo={todo} setTodo={setTodo} />
 			</div>
 			<div className="list-controls">
-				<AllTodo
+				<DisplayTodos
 					displayTodos={displayTodos}
 					handleClose={handleClose}
 					handleCompleted={handleCompleted}

@@ -2,7 +2,7 @@ import React from "react";
 import check from "../Assets/icon-check.svg";
 import close from "../Assets/icon-cross.svg";
 
-const AllTodo = ({ displayTodos, handleCompleted, handleClose }) => {
+const DisplayTodos = ({ displayTodos, handleCompleted, handleClose }) => {
 	return (
 		<div className="list-box">
 			{displayTodos.map((each) => {
@@ -36,4 +36,4 @@ const AllTodo = ({ displayTodos, handleCompleted, handleClose }) => {
 	);
 };
 
-export default AllTodo;
+export default DisplayTodos;
