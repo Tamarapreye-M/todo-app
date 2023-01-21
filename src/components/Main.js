@@ -15,32 +15,14 @@ const Main = () => {
 	const [allTodos, setAllTodos] = useState([]);
 	const [diffTodos, setDiffTodos] = useState([]);
 
-	const handleAddTodo = (ev) => {
-		ev.preventDefault();
-		allTodos.push(initial);
-		setTodo("");
-	};
+	// const handleAddTodo = (ev) => {
+	// 	ev.preventDefault();
+	// 	allTodos.push(initial);
+	// 	setTodo("");
+	// };
 
 	let allPrev = useRef(allTodos);
 	let completePrev = allTodos.filter((each) => each.completed);
-	useEffect(() => {
-		setDiffTodos((prev) => {
-			function addName(arr) {
-				return arr.map((each) => ({ ...each, name: arr }));
-			}
-			let completeArr = allTodos
-				.filter((each) => each.completed)
-				.map((each) => ({ ...each, name: "completeArr" }));
-			let activeArr = allTodos
-				.filter((each) => each.completed === false)
-				.map((each) => ({ ...each, name: "activeArr" }));
-			let allArr = allTodos.map((each) => ({ ...each, name: "allArr" }));
-
-			return [...prev, completeArr, activeArr, allArr];
-		});
-
-		console.log(diffTodos);
-	}, [allTodos.completed]);
 
 	const handleDisplays = (e) => {
 		console.log(e.target.innerHTML);
@@ -59,6 +41,56 @@ const Main = () => {
 		// setAllTodos(allPrev.current);
 	};
 
+	const [todos, setTodos] = useState([]);
+	const [displayTodos, setDisplayTodos] = useState([]);
+
+	const handleAddTodo = () => {
+		const newTodos = [
+			...todos,
+			{
+				id: Math.floor(Math.random() * 1000),
+				title: todo,
+				completed: false,
+			},
+		];
+		setTodos(newTodos);
+		setDisplayTodos(newTodos);
+		setTodo("");
+	};
+
+	const handleCompleted = (id) => {
+		console.log(todos);
+		const updated = todos.map((item) => {
+			console.log(item, id);
+			if (item.id === id) {
+				// console.log(item);
+				// console.log({ ...item, completed: !item.completed });
+				return { ...item, completed: !item.completed };
+			} else {
+				return item;
+			}
+		});
+		setTodos(updated);
+		setDisplayTodos(updated);
+	};
+
+	const handleClose = (id) => {
+		const filtered = todos.filter((item) => item.id !== id);
+		console.log(filtered);
+
+		setTodos(filtered);
+		setDisplayTodos(filtered);
+	};
+	const showTodos = (action) => {
+		if (action == "ALL") {
+			setDisplayTodos(todos);
+		} else if (action == "ACTIVE") {
+			setDisplayTodos(todos.filter((todos) => !todos.completed));
+		} else if (action == "COMPLETED") {
+			setDisplayTodos(todos.filter((todos) => todos.completed));
+		}
+	};
+
 	return (
 		<main>
 			<div className="display-container">
@@ -69,17 +101,20 @@ const Main = () => {
 				<InputTodo todo={todo} setTodo={setTodo} />
 			</div>
 			<div className="list-controls">
-				<AllTodo allTodos={allTodos} setAllTodos={setAllTodos} />
+				<AllTodo
+					displayTodos={displayTodos}
+					handleClose={handleClose}
+					handleCompleted={handleCompleted}
+				/>
 				<div className="working">
 					<p>
-						{allTodos.filter((each) => each.completed === false).length} items
-						left
+						{todos.filter((each) => each.completed === false).length} items left
 					</p>
-					<FilteredList className="desktop" handleDisplays={handleDisplays} />
+					<FilteredList className="desktop" showTodos={showTodos} />
 					<p className="clear">Clear Completed</p>
 				</div>
 			</div>
-			<FilteredList className="mobile" handleDisplays={handleDisplays} />
+			<FilteredList className="mobile" showTodos={showTodos} />
 		</main>
 	);
 };
