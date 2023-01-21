@@ -12,34 +12,6 @@ const Main = () => {
 		completed: false,
 		todo: todo,
 	};
-	const [allTodos, setAllTodos] = useState([]);
-	const [diffTodos, setDiffTodos] = useState([]);
-
-	// const handleAddTodo = (ev) => {
-	// 	ev.preventDefault();
-	// 	allTodos.push(initial);
-	// 	setTodo("");
-	// };
-
-	let allPrev = useRef(allTodos);
-	let completePrev = allTodos.filter((each) => each.completed);
-
-	const handleDisplays = (e) => {
-		console.log(e.target.innerHTML);
-		let content = e.target.innerHTML;
-		content === "all" && setAllTodos((prev) => allPrev.current);
-		content === "active" &&
-			setAllTodos((prev) => {
-				let displaying = prev.filter((el) => el.completed === false);
-				return displaying;
-			});
-
-		content === "completed" && setAllTodos(completePrev);
-
-		content === "all" &&
-			setAllTodos(diffTodos.find((each) => each.name === "completeArr"));
-		// setAllTodos(allPrev.current);
-	};
 
 	const [todos, setTodos] = useState([]);
 	const [displayTodos, setDisplayTodos] = useState([]);
@@ -60,16 +32,9 @@ const Main = () => {
 
 	const handleCompleted = (id) => {
 		console.log(todos);
-		const updated = todos.map((item) => {
-			console.log(item, id);
-			if (item.id === id) {
-				// console.log(item);
-				// console.log({ ...item, completed: !item.completed });
-				return { ...item, completed: !item.completed };
-			} else {
-				return item;
-			}
-		});
+		const updated = todos.map((item) =>
+			item.id === id ? { ...item, completed: !item.completed } : item
+		);
 		setTodos(updated);
 		setDisplayTodos(updated);
 	};
