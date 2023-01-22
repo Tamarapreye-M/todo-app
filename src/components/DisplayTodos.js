@@ -27,6 +27,8 @@ const DisplayTodos = ({ displayTodos, handleCompleted, handleDelete }) => {
 							title="remove list"
 							className={`close-icon`}
 							style={{ cursor: "pointer" }}
+							// to call a function in an event, it must be wrapped in a function
+
 							onClick={() => handleDelete(each.id)}
 						/>
 					</div>

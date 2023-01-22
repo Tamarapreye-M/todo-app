@@ -1,15 +1,11 @@
 import React from "react";
 
-const InputTodo = ({ todo, setTodo }) => {
-	const handleTodoList = (ev) => {
-		const { value } = ev.target;
-		setTodo(value);
-	};
+const InputTodo = ({ todo, handleTodoInput }) => {
 	return (
 		<input
 			type="text"
 			className="input-todo"
-			onChange={handleTodoList}
+			onChange={handleTodoInput}
 			value={todo}
 			placeholder="Create a new todo..."
 		/>

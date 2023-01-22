@@ -270,6 +270,7 @@ main .input-todo {
 
 .clear:hover {
 	color: #fff;
+	cursor: pointer;
 }
 
 .parent-container.light .clear:hover {
