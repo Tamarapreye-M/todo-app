@@ -315,6 +315,7 @@ footer {
 	margin-top: 1rem;
 	text-align: center;
 	color: var(--text-dark-greyish-blue-1);
+	font-size: 0.7rem;
 }
 footer span {
 	color: var(--bright-blue-text);
