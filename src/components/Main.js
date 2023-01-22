@@ -42,9 +42,10 @@ const Main = () => {
 
 	// handle for adding a todo item to the todo data state, when user clicks on the check in the input
 	const handleAddTodo = () => {
-		// spreads the todos state and adds an object with a unique id, a title with the value of the todo item user
-		// inputs and a property for taking note of whether it is completed or not
-		// the object represents each todo item on the list
+		/*Spreads the todos state and adds an object with a unique id, a title with the value of the todo item user
+		 inputs and a property for taking note of whether it is completed or not.
+		The object represents each todo item on the list 
+		*/
 		const newTodos = [
 			...todos,
 			{
@@ -55,7 +56,7 @@ const Main = () => {
 		];
 		// checks if the todo is empty before setting the states
 		todo.trim() && setAll(newTodos);
-		// reset the todo state of the input field
+		// reset the todo state of the input field to nothing
 		setTodo("");
 	};
 
@@ -75,7 +76,8 @@ const Main = () => {
 		setAll(filtered);
 	};
 
-	// handler for filtering and displaying todo lists and setting the actives to reflect the color
+	// handler for filtering and displaying todo lists when user clicks on all|active|completed
+	// and setting the actives to reflect the bright blue color when active
 	const handleShowTodos = (action) => {
 		if (action === "ALL") {
 			setDisplayTodos(todos);

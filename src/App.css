@@ -158,10 +158,10 @@ main .check-div:hover {
 	cursor: pointer;
 }
 
-.list-container.active .check-div {
+.list-container.completed .check-div {
 	background-image: var(--check-background);
 }
-.parent-container.light .list-container.active .check-div {
+.parent-container.light .list-container.completed .check-div {
 	background-image: var(--check-background);
 }
 /* the p containing the lists */
@@ -170,13 +170,13 @@ main .list {
 	word-break: break-all;
 	width: 85%;
 }
-main .list-container.active .list {
+main .list-container.completed .list {
 	text-decoration: line-through;
 	color: var(--text-dark-greyish-blue-1);
 	cursor: pointer;
 }
 
-.parent-container.light .list-container.active .list {
+.parent-container.light .list-container.completed .list {
 	color: var(--light-mode-dark-grey1);
 }
 
@@ -249,7 +249,7 @@ main .input-todo {
 .list-container:hover .close-icon {
 	visibility: visible !important;
 }
-
+/* the div that contains number of items left, filters and clear completed */
 .working {
 	display: flex;
 	background-color: var(--primary-dark-background);
@@ -267,7 +267,7 @@ main .input-todo {
 	background-color: var(--main-light-background);
 	color: var(--light-mode-dark-grey2);
 }
-
+/* clear completed */
 .clear:hover {
 	color: #fff;
 	cursor: pointer;
@@ -276,9 +276,19 @@ main .input-todo {
 .parent-container.light .clear:hover {
 	color: var(--light-mode-dark-grey3);
 }
-.filter span.active {
+
+/* active and hover state for filters: all, active, completed */
+.filter span.is-active {
 	color: var(--bright-blue-text);
 }
+.filter span:hover {
+	color: #fff;
+	cursor: pointer;
+}
+.parent-container.light .filter span:hover {
+	color: var(--light-mode-dark-grey3);
+}
+/* on mobile, desktop for filters is not shown */
 .desktop {
 	display: none;
 }
@@ -299,13 +309,6 @@ main .input-todo {
 .parent-container.light .mobile {
 	background: var(--main-light-background);
 	box-shadow: rgba(0, 0, 0, 0.559) 0px 25px 50px -12px;
-}
-.mobile span:hover {
-	color: #fff;
-	cursor: pointer;
-}
-.parent-container.light .mobile span:hover {
-	color: var(--light-mode-dark-grey3);
 }
 
 footer {
@@ -330,12 +333,5 @@ footer span {
 		font-weight: 700;
 		color: var(--text-dark-greyish-blue-1);
 		border-radius: 8px;
-	}
-	.desktop span:hover {
-		color: #fff;
-		cursor: pointer;
-	}
-	.parent-container.light .desktop span:hover {
-		color: var(--light-mode-dark-grey3);
 	}
 }
