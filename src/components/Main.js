@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import check from "../Assets/icon-check.svg";
 
 import InputTodo from "./InputTodo";
@@ -30,6 +30,13 @@ const Main = () => {
 		const { value } = ev.target;
 		setTodo(value);
 	};
+	// handler for setting it to data state, display state and local storage
+	function setAll(state) {
+		setTodos(state);
+		setDisplayTodos(state);
+		localStorage.setItem("todos", JSON.stringify(state));
+	}
+
 	// handle for adding a todo item to the todo data state, when user clicks on the check in the input
 	const handleAddTodo = () => {
 		// spreads the todos state and adds an object with a unique id, a title with the value of the todo item user
@@ -43,10 +50,13 @@ const Main = () => {
 				completed: false,
 			},
 		];
-		// sets the data state
-		setTodos(newTodos);
-		// also sets the display state
-		setDisplayTodos(newTodos);
+		// // sets the data state
+		// setTodos(newTodos);
+		// // set the local storage
+		// logTodos(newTodos);
+		// // also sets the display state
+		// setDisplayTodos(newTodos);
+		setAll(newTodos);
 		// reset the todo state of the input field
 		setTodo("");
 	};
@@ -56,8 +66,10 @@ const Main = () => {
 		const updated = todos.map((item) =>
 			item.id === id ? { ...item, completed: !item.completed } : item
 		);
-		setTodos(updated);
-		setDisplayTodos(updated);
+		// setTodos(updated);
+		// setDisplayTodos(updated);
+		// logTodos(updated);
+		setAll(updated);
 	};
 
 	// handler for deleting when user clicks on the delete icon on each todo item
@@ -65,8 +77,10 @@ const Main = () => {
 		const filtered = todos.filter((item) => item.id !== id);
 		console.log(filtered);
 
-		setTodos(filtered);
-		setDisplayTodos(filtered);
+		// setTodos(filtered);
+		// setDisplayTodos(filtered);
+		// logTodos(filtered);
+		setAll(filtered);
 	};
 
 	// handler for filtering and displaying todo lists and setting the actives to reflect the color
@@ -85,9 +99,19 @@ const Main = () => {
 	// handler for removing all completed list items
 	const clearCompleted = () => {
 		let cleared = todos.filter((each) => each.completed === false);
-		setTodos(cleared);
-		setDisplayTodos(cleared);
+		// setTodos(cleared);
+		// setDisplayTodos(cleared);
+		// logTodos(cleared);
+		setAll(cleared);
 	};
+	// use effect for getting the todos and ensuring they persist in the data state and are displayed
+	useEffect(() => {
+		const logs = localStorage.getItem("todos");
+		if (logs) {
+			setTodos(JSON.parse(logs));
+			setDisplayTodos(JSON.parse(logs));
+		}
+	}, []);
 
 	return (
 		<main>
