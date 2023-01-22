@@ -56,7 +56,7 @@ const Main = () => {
 		// logTodos(newTodos);
 		// // also sets the display state
 		// setDisplayTodos(newTodos);
-		setAll(newTodos);
+		todo.trim() && setAll(newTodos);
 		// reset the todo state of the input field
 		setTodo("");
 	};
