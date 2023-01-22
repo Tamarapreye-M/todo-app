@@ -2,7 +2,7 @@ import React from "react";
 import check from "../Assets/icon-check.svg";
 import close from "../Assets/icon-cross.svg";
 
-const DisplayTodos = ({ displayTodos, handleCompleted, handleClose }) => {
+const DisplayTodos = ({ displayTodos, handleCompleted, handleDelete }) => {
 	return (
 		<div className="list-box">
 			{displayTodos.map((each) => {
@@ -27,7 +27,7 @@ const DisplayTodos = ({ displayTodos, handleCompleted, handleClose }) => {
 							title="remove list"
 							className={`close-icon`}
 							style={{ cursor: "pointer" }}
-							onClick={() => handleClose(each.id)}
+							onClick={() => handleDelete(each.id)}
 						/>
 					</div>
 				);

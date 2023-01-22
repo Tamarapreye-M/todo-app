@@ -33,7 +33,7 @@ const Main = () => {
 		setDisplayTodos(updated);
 	};
 
-	const handleClose = (id) => {
+	const handleDelete = (id) => {
 		const filtered = todos.filter((item) => item.id !== id);
 		console.log(filtered);
 
@@ -67,7 +67,7 @@ const Main = () => {
 			<div className="list-controls">
 				<DisplayTodos
 					displayTodos={displayTodos}
-					handleClose={handleClose}
+					handleDelete={handleDelete}
 					handleCompleted={handleCompleted}
 				/>
 				<div className="working">
