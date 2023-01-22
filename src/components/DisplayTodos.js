@@ -14,6 +14,7 @@ const DisplayTodos = ({ displayTodos, handleCompleted, handleDelete }) => {
 						<div
 							className={`check-div`}
 							onClick={() => handleCompleted(each.id)}
+							title={each.completed ? "unmark" : "mark complete"}
 						>
 							{each.completed && (
 								<img src={check} alt="check icon" aria-label="check" />

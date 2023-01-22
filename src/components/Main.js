@@ -69,7 +69,7 @@ const Main = () => {
 		setDisplayTodos(filtered);
 	};
 
-	// handler for filtering and displaying todo lists
+	// handler for filtering and displaying todo lists and setting the actives to reflect the color
 	const showTodos = (action) => {
 		if (action === "ALL") {
 			setDisplayTodos(todos);
