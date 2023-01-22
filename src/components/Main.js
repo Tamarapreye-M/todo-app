@@ -76,7 +76,7 @@ const Main = () => {
 	};
 
 	// handler for filtering and displaying todo lists and setting the actives to reflect the color
-	const showTodos = (action) => {
+	const handleShowTodos = (action) => {
 		if (action === "ALL") {
 			setDisplayTodos(todos);
 			setIsActive({ ...isActive, all: true, active: false, completed: false });
@@ -128,7 +128,7 @@ const Main = () => {
 					</p>
 					<FilteredList
 						className="desktop filter"
-						showTodos={showTodos}
+						handleShowTodos={handleShowTodos}
 						isActive={isActive}
 						setIsActive={setIsActive}
 					/>
@@ -139,7 +139,7 @@ const Main = () => {
 			</div>
 			<FilteredList
 				className="mobile filter"
-				showTodos={showTodos}
+				handleShowTodos={handleShowTodos}
 				isActive={isActive}
 				setIsActive={setIsActive}
 			/>
