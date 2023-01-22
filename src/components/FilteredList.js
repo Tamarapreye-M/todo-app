@@ -1,9 +1,5 @@
-const FilteredList = ({
-	handleShowTodos,
-	className,
-	isActive,
-	setIsActive,
-}) => {
+const FilteredList = (props) => {
+	const { handleShowTodos, className, isActive } = props;
 	return (
 		<div className={className}>
 			<span

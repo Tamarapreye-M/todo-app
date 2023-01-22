@@ -129,7 +129,6 @@ const Main = () => {
 						className="desktop filter"
 						handleShowTodos={handleShowTodos}
 						isActive={isActive}
-						setIsActive={setIsActive}
 					/>
 					<p className="clear" onClick={handleClearCompleted}>
 						Clear Completed
@@ -140,7 +139,6 @@ const Main = () => {
 				className="mobile filter"
 				handleShowTodos={handleShowTodos}
 				isActive={isActive}
-				setIsActive={setIsActive}
 			/>
 		</main>
 	);
