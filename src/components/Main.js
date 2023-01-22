@@ -32,8 +32,11 @@ const Main = () => {
 	};
 	// handler for setting it to data state, display state and local storage
 	function setAll(state) {
+		// sets the data state
 		setTodos(state);
+		// also sets the display state
 		setDisplayTodos(state);
+		// set the local storage
 		localStorage.setItem("todos", JSON.stringify(state));
 	}
 
@@ -50,12 +53,7 @@ const Main = () => {
 				completed: false,
 			},
 		];
-		// // sets the data state
-		// setTodos(newTodos);
-		// // set the local storage
-		// logTodos(newTodos);
-		// // also sets the display state
-		// setDisplayTodos(newTodos);
+		// checks if the todo is empty before setting the states
 		todo.trim() && setAll(newTodos);
 		// reset the todo state of the input field
 		setTodo("");
@@ -66,9 +64,6 @@ const Main = () => {
 		const updated = todos.map((item) =>
 			item.id === id ? { ...item, completed: !item.completed } : item
 		);
-		// setTodos(updated);
-		// setDisplayTodos(updated);
-		// logTodos(updated);
 		setAll(updated);
 	};
 
@@ -77,9 +72,6 @@ const Main = () => {
 		const filtered = todos.filter((item) => item.id !== id);
 		console.log(filtered);
 
-		// setTodos(filtered);
-		// setDisplayTodos(filtered);
-		// logTodos(filtered);
 		setAll(filtered);
 	};
 
@@ -99,9 +91,7 @@ const Main = () => {
 	// handler for removing all completed list items
 	const clearCompleted = () => {
 		let cleared = todos.filter((each) => each.completed === false);
-		// setTodos(cleared);
-		// setDisplayTodos(cleared);
-		// logTodos(cleared);
+
 		setAll(cleared);
 	};
 	// use effect for getting the todos and ensuring they persist in the data state and are displayed
