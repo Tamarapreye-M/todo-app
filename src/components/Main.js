@@ -30,7 +30,7 @@ const Main = () => {
 		const { value } = ev.target;
 		setTodo(value);
 	};
-	// handler for setting it to data state, display state and local storage
+	// handler for setting the data state, display state and local storage
 	function setAll(state) {
 		// sets the data state
 		setTodos(state);
