@@ -276,6 +276,9 @@ main .input-todo {
 .parent-container.light .clear:hover {
 	color: var(--light-mode-dark-grey3);
 }
+.filter span.active {
+	color: var(--bright-blue-text);
+}
 .desktop {
 	display: none;
 }
@@ -304,10 +307,14 @@ main .input-todo {
 .parent-container.light .mobile span:hover {
 	color: var(--light-mode-dark-grey3);
 }
+
 footer {
 	margin-top: 1rem;
 	text-align: center;
 	color: var(--text-dark-greyish-blue-1);
+}
+footer span {
+	color: var(--bright-blue-text);
 }
 @media screen and (min-width: 768px) {
 	.mobile {

@@ -73,10 +73,13 @@ const Main = () => {
 	const showTodos = (action) => {
 		if (action === "ALL") {
 			setDisplayTodos(todos);
+			setIsActive({ ...isActive, all: true, active: false, completed: false });
 		} else if (action === "ACTIVE") {
 			setDisplayTodos(todos.filter((todos) => !todos.completed));
+			setIsActive({ ...isActive, all: false, active: true, completed: false });
 		} else if (action === "COMPLETED") {
 			setDisplayTodos(todos.filter((todos) => todos.completed));
+			setIsActive({ ...isActive, all: false, active: false, completed: true });
 		}
 	};
 	// handler for removing all completed list items
@@ -110,7 +113,7 @@ const Main = () => {
 						{todos.filter((each) => each.completed === false).length} items left
 					</p>
 					<FilteredList
-						className="desktop"
+						className="desktop filter"
 						showTodos={showTodos}
 						isActive={isActive}
 						setIsActive={setIsActive}
@@ -121,7 +124,7 @@ const Main = () => {
 				</div>
 			</div>
 			<FilteredList
-				className="mobile"
+				className="mobile filter"
 				showTodos={showTodos}
 				isActive={isActive}
 				setIsActive={setIsActive}
