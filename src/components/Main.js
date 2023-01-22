@@ -89,9 +89,8 @@ const Main = () => {
 		}
 	};
 	// handler for removing all completed list items
-	const clearCompleted = () => {
+	const handleClearCompleted = () => {
 		let cleared = todos.filter((each) => each.completed === false);
-
 		setAll(cleared);
 	};
 	// use effect for getting the todos and ensuring they persist in the data state and are displayed
@@ -132,7 +131,7 @@ const Main = () => {
 						isActive={isActive}
 						setIsActive={setIsActive}
 					/>
-					<p className="clear" onClick={clearCompleted}>
+					<p className="clear" onClick={handleClearCompleted}>
 						Clear Completed
 					</p>
 				</div>
